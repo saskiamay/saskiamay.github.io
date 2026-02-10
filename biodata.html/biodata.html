@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get To Know Me</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background: #f6f7fb;
+            padding: 40px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+
+        /* ===== TOP SECTION ===== */
+        .top {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            min-height: 320px;
+        }
+
+        .photo {
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 0;
+        }
+        
+        .profile {
+            padding: 40px;
+        }
+
+        .profile h1 {
+            font-size: 28px;
+            color: #6c63ff;
+            margin-bottom: 5px;
+        }
+
+        .profile h3 {
+            font-weight: 500;
+            color: #777;
+            margin-bottom: 25px;
+        }
+
+        .profile-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px 30px;
+        }
+
+        .profile-item {
+            font-size: 15px;
+            color: #555;
+        }
+
+        .profile-item span {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .dream {
+            margin-top: 20px;
+            font-style: italic;
+            color: #6c63ff;
+        }
+
+        /* ===== BOTTOM SECTION ===== */
+        .bottom {
+            border-top: 1px solid #eee;
+            padding: 30px 40px 40px;
+        }
+
+        .bottom h2 {
+            color: #ff5f8f;
+            margin-bottom: 20px;
+        }
+
+        .love-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .love-item {
+            background: #fff0f6;
+            padding: 12px 22px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #ff5f8f;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .top {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-list {
+                grid-template-columns: 1fr;
+            }
+
+            body {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- TOP -->
+    <div class="top">
+        <div class="photo">
+            <!-- GANTI FOTO KAMU DI SINI -->
+            <img src="fotosas.PNG" alt="My Photo">
+        </div>
+
+        <div class="profile">
+            <h1>Get to know about me!</h1>
+            <h3>Profile</h3>
+
+            <div class="profile-list">
+                <div class="profile-item"><span>Name:</span> Saseu</div>
+                <div class="profile-item"><span>Age:</span> 18 going to 19</div>
+                <div class="profile-item"><span>Birthday:</span> May 5th</div>
+                <div class="profile-item"><span>Height:</span> 159 cm</div>
+                <div class="profile-item"><span>Personality:</span> ISTJ ^_^</div>
+            </div>
+
+            <div class="dream">
+                Dreaming of travelling the world 🌍✈️
+            </div>
+        </div>
+    </div>
+
+    <!-- BOTTOM -->
+    <div class="bottom">
+        <h2>Things I Love ❤️</h2>
+        <div class="love-list">
+            <div class="love-item">Watching Movie</div>
+            <div class="love-item">Crafting</div>
+            <div class="love-item">Making a Vlog</div>
+            <div class="love-item">Romcom Novel</div>
+            <div class="love-item">Fruits</div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
