@@ -276,37 +276,6 @@ body {
     cursor: pointer;
 }
 
-/* ===== POPUP CRAFTING ===== */
-#craftPopup .popup-content {
-    max-width: 340px;
-}
-
-.craft-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-}
-
-.craft-grid img {
-    width: 100%;
-    max-width: 140px;
-    margin: auto;
-    border: 2px solid #000;
-    background: #fff;
-    padding: 6px 6px 14px;
-    transition: transform 0.3s ease;
-}
-
-.craft-grid img:nth-child(odd) {
-    transform: rotate(-3deg);
-}
-.craft-grid img:nth-child(even) {
-    transform: rotate(3deg);
-}
-
-.craft-grid img:hover {
-    transform: scale(1.05) rotate(0deg);
-}
 
 /* ===== POPUP DRAMA SERIES ===== */
 #dramaPopup .popup-content {
@@ -481,6 +450,32 @@ body {
     font-family: 'Inter', sans-serif;
 }
 
+/* ===== css audio ===== */
+.music-btn {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+
+  padding: 12px 22px;
+  border: none;
+  border-radius: 30px;
+
+  background: #ffb6c1;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(255, 182, 193, 0.4);
+  transition: all 0.3s ease;
+}
+
+.music-btn:hover {
+  transform: scale(1.05);
+  background: #ff8fab;
+}
+
+
 </style>
 </head>
 
@@ -534,7 +529,7 @@ function openSpotify() {
 
     </div>
 
-    <div class="love">
+    <section class="love">
         <h3>Things I Love ❤️</h3>
         <div class="love-list">
             <div class="love-item" onclick="openMovie()">Watching Movie 🎬</div>
@@ -543,7 +538,7 @@ function openSpotify() {
             <div class="love-item" onclick="openVlog()">Making a Vlog 🎥</div>
             <div class="love-item" onclick="openNovel()">Romcom Novel </div>
         </div>
-    </div>
+    </section>
 
 </div>
 
@@ -625,6 +620,13 @@ function openSpotify() {
   </div>
 </div>
 
+<!-- audio  -->
+<audio id="bgMusic" src="music.mp4"></audio>
+
+<button class="music-btn" onclick="toggleMusic()">
+  ♫ Play Music
+</button>
+
 <script>
 function openMovie() {
     document.getElementById("moviePopup").style.display = "flex";
@@ -666,9 +668,25 @@ function closeMusic() {
 
 </script>
 
-<div class="copyright">
- © 2026 Saseu ♡ just a page of my little world
-</div>
+<footer class="copyright">
+  <p>© 2026 Saseu ♡ just a page of my little world</p><br>
+</footer>
+
+<script>
+  const music = document.getElementById("bgMusic");
+  const btn = document.querySelector(".music-btn");
+
+  function toggleMusic() {
+    if (music.paused) {
+      music.play();
+      btn.innerHTML = "❚❚ Pause Music";
+    } else {
+      music.pause();
+      btn.innerHTML = "♫ Play Music";
+    }
+  }
+
+</script>
 
 </body>
 </html>
