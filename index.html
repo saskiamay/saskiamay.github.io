@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Saseu's World</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+/* ===== GLOBAL ===== */
+html { scroll-behavior: smooth; }
+body { margin: 0; font-family: 'Fredoka', sans-serif; background: #f4efe6; }
+
+/* ===== NAVBAR ===== */
+nav {
+  position: fixed; top: 0; width: 100%; background: #ffd84d;
+  display: flex; justify-content: center; gap: 40px; padding: 15px;
+  border-bottom: 4px solid black; z-index: 1000;
+}
+nav a { text-decoration: none; font-weight: 600; color: black; transition: 0.3s; }
+nav a:hover { color: #d46cff; transform: scale(1.1); }
+
+/* ===== HERO ===== */
+.hero-image {
+  height: 100vh; background: url("hero.svg") no-repeat center center;
+  background-size: cover; margin-top: 70px;
+}
+
+/* ===== BIO ===== */
+.bio-section { padding: 80px 60px; background: #008471; }
+.bio-card {
+  display: flex; align-items: flex-start; gap: 40px;
+  background: #ffc9e3; padding: 40px; border: 4px solid black;
+}
+.bio-card img { width: 200px; flex-shrink: 0; border: 5px solid white; box-shadow: 5px 5px 0 black; }
+.bio-desc { max-width: 500px; }
+.bio-desc h2 { margin-top: 0; font-size: 26px; }
+.bio-desc p { font-size: 16px; line-height: 1.7; margin-bottom: 15px; }
+.dream { color: #2e5bd3; font-weight: 600; }
+
+/* ===== PROFILE TABLE ===== */
+.table-page { background: #fff6dc; padding: 20px; }
+.table-title { text-align: center; margin-bottom: 15px; font-weight: 600; color: #000000; }
+.bio-table { width: 100%; border-collapse: collapse; }
+.bio-table th, .bio-table td { border: 3px solid black; padding: 10px 14px; text-align: left; }
+.bio-table tr:nth-child(odd) th, .bio-table tr:nth-child(odd) td { background: #91f5a2; }
+.bio-table tr:nth-child(even) th, .bio-table tr:nth-child(even) td { background: #86e89f; }
+.bio-table tr:hover th, .bio-table tr:hover td { background: #57ce77; }
+
+/* ===== LOVE SECTION ===== */
+.love-section { 
+  background: #ffd84d; 
+  padding: 80px 40px; 
+  text-align: center; 
+}
+
+/* Membuat tombol menjadi OVAL */
+.love-tags span {
+  display: inline-block;
+  padding: 12px 30px;      /* Padding atas-bawah 12, kiri-kanan 30 biar lonjong */
+  margin: 10px;
+  border-radius: 50px;     /* Angka besar ini yang bikin OVAL */
+  min-width: 160px;        /* Biar ukuran antar tombol lebih seimbang */
+  font-weight: 600;
+  cursor: pointer;
+  border: 2px solid black; /* Biar lebih tegas */
+  transition: 0.3s;
+  text-align: center;      /* Biar teks di tengah */
+}
+
+/* Warna-warni Tombol */
+.love-tags span:nth-child(1) { background: #a6cff2 !important; }
+.love-tags span:nth-child(2) { background: #f2619c !important; }
+.love-tags span:nth-child(3) { background: #f7f2e8 !important; }
+.love-tags span:nth-child(4) { background: #c1eaa9 !important; }
+.love-tags span:nth-child(5) { background: #d1caea !important; }
+
+/* Efek Hover */
+.love-tags span:hover {
+  transform: translateY(-5px);
+  filter: brightness(0.9);
+}
+/* Latar belakang hitam yang menutupi seluruh layar */
+.popup {
+  display: none; 
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7) !important;
+  backdrop-filter: blur(5px);
+  justify-content: center;
+  align-items: center;
+  z-index: 9999 !important;
+}
+
+/* Kotak putih/berwarna di tengah */
+.popup-content {
+  width: 90% !important;
+  max-width: 500px !important; /* Lebar maksimal kotak */
+  min-height: 300px;           /* Tinggi minimal biar gak ciut */
+  padding: 30px !important;
+  border: 3px solid black !important;
+  position: relative !important;
+  max-height: 85vh !important; /* Biar gak melebihi tinggi layar HP/Laptop */
+  overflow-y: auto !important; /* Supaya bisa di-scroll kalau foto banyak */
+  box-shadow: 10px 10px 0px rgba(0,0,0,0.2) !important;
+  border-radius: 15px !important; /* Kasih sedikit lengkungan biar manis */
+}
+
+/* Warna latar belakang khusus untuk tiap popup */
+#moviePopup .popup-content { background-color: #a6cff2!important; } /* Pink */
+#dramaPopup .popup-content { background-color: #f2619c  !important; } /* Biru */
+#musicPopup .popup-content { background-color: #f7f2e8 !important; } /* Kuning */
+#vlogPopup .popup-content { background-color: #c1eaa9 !important; }  /* Hijau */
+#novelPopup .popup-content { background-color: #d1caea!important; } /* Ungu */
+
+.close {
+  position: absolute; top: 10px; right: 15px; font-size: 30px;
+  cursor: pointer; color: #000; font-weight: bold;
+}
+.popup-grid {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important; /* Tetap 2 kolom */
+  gap: 20px !important;
+  margin-top: 20px !important;
+  padding-bottom: 20px;
+}
+
+.popup-grid img {
+  width: 100% !important;
+  max-width: 180px !important;
+  height: auto !important;
+  background: white !important;
+  padding: 8px 8px 25px 8px !important;
+  border: 1px solid #ddd !important;
+  box-shadow: 3px 3px 10px rgba(0,0,0,0.1) !important;
+  margin: 0 auto !important;
+}
+
+.popup-grid img:nth-child(odd) { transform: rotate(-3deg); }
+.popup-grid img:nth-child(even) { transform: rotate(3deg); }
+.popup-grid img:hover { transform: scale(1.1) rotate(0deg) !important; z-index: 10; }
+
+/* ===== CONTACT & FOOTER ===== */
+.contact-section { padding: 80px 40px; background: #f8b3d6; text-align: center; }
+.social button {
+  padding: 10px 20px; margin: 10px; border: none; background: white;
+  font-weight: bold; cursor: pointer; border-radius: 20px; transition: 0.3s;
+}
+footer { text-align: center; padding: 20px; background: #2e5bd3; color: white; }
+
+@media (max-width: 768px) {
+  .bio-card { flex-direction: column; align-items: center; text-align: center; }
+  .popup-grid { grid-template-columns: 1fr !important; }
+}
+</style>
+</head>
+
+
+<body>
+<header>
+<!-- NAVIGATION -->
+<nav>
+  <a href="#home">Home</a>
+  <a href="#bio">Bio</a>
+  <a href="#profile">Saski’s Profile</a> <!-- INI BARU -->
+  <a href="#love">Things I Love</a>
+  <a href="#contact">Contact</a>
+</nav>
+</header>
+<!-- HERO -->
+<main>
+<section id="home" class="hero-image"></section>
+
+<!-- BIO -->
+<section id="bio" class="bio-section">
+  <div class="bio-card">
+
+    <img src="fotoosas.jpeg" alt="My Photo">
+
+    <div class="bio-desc">  
+      <h2>Who is Saski?</h2>
+
+      <p>
+        Hi! You can call me Sas^^ - I am 19 years old and currently a university student majoring in Information System at Universitas Internasional Batam. I have a strong interest in multimedia, especially in creating designs that are fun, colorful, and full of cheerful vibes. I enjoy exploring creative ideas and bringing them to life through vibrant visual works.
+      </p>
+
+      <p class="dream">
+        Dreaming of travelling the world and collecting beautiful memories
+      </p>
+    </div>
+
+  </div>
+</section>
+</main>
+<section id="profile" class="table-page">
+<div class="table-page">
+  <h2 class="table-title">Saski's Profile</h2>
+  <table class="bio-table">
+    <tr>
+      <th>Full Name</th>
+      <td>Saskia May Nnanda</td>
+    </tr>
+    <tr>
+      <th>Birthday</th>
+      <td>May 5th</td>
+    </tr>
+    <tr>
+      <th>Age</th>
+      <td>20 years old</td>
+    </tr>
+    <tr>
+      <th>Height</th>
+      <td>159 cm</td>
+    </tr>
+    <tr>
+      <th>Personality</th>
+      <td>ISTJ</td>
+    </tr>
+    <tr>
+      <th>Hobby</th>
+      <td>Watching movies, listening to music</td>
+    </tr>
+    <tr>
+      <th>Favorite Color</th>
+      <td>Pink</td>
+    </tr>
+    <tr>
+      <th>Favorite Food</th>
+      <td>Spaghetti</td>
+    </tr>
+    <tr>
+      <th>Dream</th>
+      <td>Travelling the world 🌍✈️</td>
+    </tr>
+  </table>
+</div>
+</section>
+<!-- LOVE -->
+<section id="love" class="love-section">
+  <h2>Things I Love ❤️</h2>
+
+  <div class="love-tags">
+    <span onclick="openPopup('moviePopup')">Watching Movie 🎬</span>
+    <span onclick="openPopup('dramaPopup')">Drama Series 🎭</span>
+    <span onclick="openPopup('musicPopup')">Listening Music 🎧</span>
+    <span onclick="openPopup('vlogPopup')">Making a Vlog 🎥</span>
+    <span onclick="openPopup('novelPopup')">Romcom Novel 📖</span>
+  </div>
+</section>
+  <!-- 1. Watching Movie -->
+<div id="moviePopup" class="popup">
+  <div class="popup-content">
+    <span class="close" onclick="closePopup('moviePopup')">×</span>
+    <h3>Watching Movie 🎬</h3>
+    <div class="popup-grid">
+      <img src="movie1.jpg">
+      <img src="movie2.jpg">
+      <img src="movie3.jpg">
+      <img src="movie4.jpg">
+    </div>
+  </div>
+</div>
+  <!-- 2. Drama Series -->
+<div id="dramaPopup" class="popup">
+  <div class="popup-content">
+    <span class="close" onclick="closePopup('dramaPopup')">×</span>
+    <h3>Drama Series 🎭</h3>
+    <div class="popup-grid">
+      <img src="drama1.jpg">
+      <img src="drama2.jpg">
+      <img src="drama3.jpg">
+      <img src="drama4.jpg">
+    </div>
+  </div>
+</div>
+  <!-- 3. Listening Music -->
+ <div id="musicPopup" class="popup">
+  <div class="popup-content">
+    <span class="close" onclick="closePopup('musicPopup')">×</span>
+    <h3>Listening Music 🎧</h3>
+    <div class="popup-grid">
+      <img src="music1.jpg">
+      <img src="music2.jpg">
+      <img src="music3.jpg">
+      <img src="music4.jpg">
+    </div>
+  </div>
+</div>
+
+  <!-- 4. Making a Vlog -->
+<div id="vlogPopup" class="popup">
+  <div class="popup-content">
+    <span class="close" onclick="closePopup('vlogPopup')">×</span>
+    <h3>Making a Vlog 🎥</h3>
+    <div class="popup-grid">
+      <img src="vlog1.jpeg">
+      <img src="vlog2.jpeg">
+      <img src="vlog3.jpeg">
+      <img src="vlog4.jpeg">
+    </div>
+  </div>
+</div>
+  <!-- 5. Romcom Novel -->
+<div id="novelPopup" class="popup">
+  <div class="popup-content">
+    <span class="close" onclick="closePopup('novelPopup')">×</span>
+    <h3>Romcom Novel 📖</h3>
+    <div class="popup-grid">
+      <img src="novel1.jpg">
+      <img src="novel2.jpg">
+      <img src="novel3.jpeg">
+      <img src="novel4.jpg">
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <h2>Contact Me 💌</h2>
+  <p>Email: saskiamaynnanda20@email.com</p>
+
+  <div class="social">
+    <button>Instagram @sasskiamay</button>
+    <button>YouTube sasskiamay</button>
+  </div>
+</section>
+
+
+<script>
+function openPopup(id) {
+  const popup = document.getElementById(id);
+  if (popup) {
+    popup.style.display = "flex";
+    document.body.style.overflow = "hidden"; // Biar background gak bisa di-scroll saat popup buka
+  }
+}
+
+function closePopup(id) {
+  const popup = document.getElementById(id);
+  if (popup) {
+    popup.style.display = "none";
+    document.body.style.overflow = "auto"; // Aktifkan scroll lagi
+  }
+}
+</script>
+<footer>
+  © 2026 Saseu ♡ just a page of my little world
+  <br>
+</footer>
+
+<time datetime="2026"></time>
+</body>
+</html>
