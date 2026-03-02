@@ -155,6 +155,44 @@ footer { text-align: center; padding: 20px; background: #2e5bd3; color: white; }
   .bio-card { flex-direction: column; align-items: center; text-align: center; }
   .popup-grid { grid-template-columns: 1fr !important; }
 }
+.music-item {
+  text-align: center;
+  transition: 0.3s;
+}
+
+.music-item img {
+  width: 100%;
+  max-width: 180px;
+  display: block;
+  margin: 0 auto;
+  background: white;
+  padding: 10px 10px 250px 10px;
+  box-shadow: 3px 3px 10px rgba(0,0,0,0.15);
+}
+
+
+.music-item p {
+  position: absolute;
+  bottom: 4px;
+  left: 0;
+  right: 0;
+  margin: 0;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.music-item:nth-child(odd) {
+  transform: rotate(-2deg);
+}
+
+.music-item:nth-child(even) {
+  transform: rotate(2deg);
+}
+
+.music-item:hover {
+  transform: scale(1.05) rotate(0deg);
+  z-index: 10;
+}
 </style>
 </head>
 
@@ -201,7 +239,7 @@ footer { text-align: center; padding: 20px; background: #2e5bd3; color: white; }
   <table class="bio-table">
     <tr>
       <th>Full Name</th>
-      <td>Saskia May Nnanda</td>
+      <td>Saskia May Nanda</td>
     </tr>
     <tr>
       <th>Birthday</th>
@@ -209,7 +247,7 @@ footer { text-align: center; padding: 20px; background: #2e5bd3; color: white; }
     </tr>
     <tr>
       <th>Age</th>
-      <td>20 years old</td>
+      <td>18 going to 19 yo</td>
     </tr>
     <tr>
       <th>Height</th>
@@ -220,20 +258,20 @@ footer { text-align: center; padding: 20px; background: #2e5bd3; color: white; }
       <td>ISTJ</td>
     </tr>
     <tr>
-      <th>Hobby</th>
-      <td>Watching movies, listening to music</td>
+      <th>Fav Genre</th>
+      <td>Slice of Life</td>
     </tr>
     <tr>
-      <th>Favorite Color</th>
-      <td>Pink</td>
+      <th>Comfort Place</th>
+      <td>Sunset Views</td>
     </tr>
     <tr>
-      <th>Favorite Food</th>
-      <td>Spaghetti</td>
+      <th>Expertise</th>
+      <td>Visual Designer</td>
     </tr>
     <tr>
-      <th>Dream</th>
-      <td>Travelling the world 🌍✈️</td>
+      <th>Signature Style</th>
+      <td>Colorful, playful</td>
     </tr>
   </table>
 </div>
@@ -282,11 +320,26 @@ footer { text-align: center; padding: 20px; background: #2e5bd3; color: white; }
     <span class="close" onclick="closePopup('musicPopup')">×</span>
     <h3>Listening Music 🎧</h3>
     <div class="popup-grid">
-      <img src="music1.jpg">
-      <img src="music2.jpg">
-      <img src="music3.jpg">
-      <img src="music4.jpg">
-    </div>
+  <div class="music-item">
+    <img src="music1.jpg">
+    <p>Ziggy Zagga</p>
+  </div>
+
+  <div class="music-item">
+    <img src="music2.jpg">
+    <p>I Pray</p>
+  </div>
+
+  <div class="music-item">
+    <img src="music3.jpg">
+    <p>Dan..</p>
+  </div>
+
+  <div class="music-item">
+    <img src="music4.jpg">
+    <p>Normal Girl</p>
+  </div>
+</div>
   </div>
 </div>
 
