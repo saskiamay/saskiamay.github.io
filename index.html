@@ -22,12 +22,18 @@ nav a:hover { color: #d46cff; transform: scale(1.1); }
 
 /* ===== HERO ===== */
 .hero-image {
-  height: 100vh; background: url("hero.svg") no-repeat center center;
-  background-size: cover; margin-top: 70px;
+  height: 94vh; background: url("hero.svg") no-repeat center center;
+  background-size: cover; margin-top: 40px;
 }
 
 /* ===== BIO ===== */
-.bio-section { padding: 80px 60px; background: #008471; }
+.bio-section { 
+  padding: 80px 60px; 
+  background: #008471; 
+  margin-top: -48px;  /* NARIK SEDIKIT: Biar nempel sempurna ke hero */
+  position: relative;
+  z-index: 5;        /* Biar dia menimpa sisa celah di bawah hero */
+}
 .bio-card {
   display: flex; align-items: flex-start; gap: 40px;
   background: #ffc9e3; padding: 40px; border: 4px solid black;
@@ -39,19 +45,27 @@ nav a:hover { color: #d46cff; transform: scale(1.1); }
 .dream { color: #2e5bd3; font-weight: 600; }
 
 /* ===== PROFILE TABLE ===== */
-.table-page { background: #fff6dc; padding: 20px; }
+.table-page { background: #ffefd1; padding: 20px; }
 .table-title { text-align: center; margin-bottom: 15px; font-weight: 600; color: #000000; }
 .bio-table { width: 100%; border-collapse: collapse; }
 .bio-table th, .bio-table td { border: 3px solid black; padding: 10px 14px; text-align: left; }
-.bio-table tr:nth-child(odd) th, .bio-table tr:nth-child(odd) td { background: #91f5a2; }
-.bio-table tr:nth-child(even) th, .bio-table tr:nth-child(even) td { background: #86e89f; }
-.bio-table tr:hover th, .bio-table tr:hover td { background: #57ce77; }
+.bio-table tr:nth-child(odd) th, .bio-table tr:nth-child(odd) td { background: #e8d9ed; }
+.bio-table tr:nth-child(even) th, .bio-table tr:nth-child(even) td { background: #d2b3db; }
+.bio-table tr:hover th, .bio-table tr:hover td { background: #dec1db; }
 
 /* ===== LOVE SECTION ===== */
 .love-section { 
   background: #ffd84d; 
   padding: 80px 40px; 
-  text-align: center; 
+  text-align: center;
+  
+  display: none; 
+  
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
 }
 
 /* Membuat tombol menjadi OVAL */
@@ -143,12 +157,7 @@ nav a:hover { color: #d46cff; transform: scale(1.1); }
 .popup-grid img:nth-child(even) { transform: rotate(3deg); }
 .popup-grid img:hover { transform: scale(1.1) rotate(0deg) !important; z-index: 10; }
 
-/* ===== CONTACT & FOOTER ===== */
-.contact-section { padding: 80px 40px; background: #f8b3d6; text-align: center; }
-.social button {
-  padding: 10px 20px; margin: 10px; border: none; background: white;
-  font-weight: bold; cursor: pointer; border-radius: 20px; transition: 0.3s;
-}
+/* ===== FOOTER ===== */
 footer { text-align: center; padding: 20px; background: #2e5bd3; color: white; }
 
 @media (max-width: 768px) {
@@ -194,6 +203,202 @@ footer { text-align: center; padding: 20px; background: #2e5bd3; color: white; }
   z-index: 10;
 }
 
+
+/* Sidebar Container (Melayang di atas konten) */
+.sidebar-container {
+  position: fixed;
+  left: -290px; /* Sembunyi di kiri */
+  top: 0;
+  height: 100vh;
+  width: 250px;
+  background: #ff7d4d;
+  border-right: 4px solid black;
+  z-index: 10000; /* Di bawah tombol pemicu */
+  transition: 0.4s ease;
+  padding: 80px 20px 20px 20px; /* Padding atas agar menu tidak tertutup tombol pemicu */
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.sidebar-container.active {
+  left: 0;
+}
+
+/* Grup Titik Warna-warni */
+.dot-group { display: flex; gap: 5px; }
+.dot { width: 10px; height: 10px; border-radius: 50%; border: 1.5px solid black; }
+.red { background: #ff5f56; }
+.yellow { background: #ffbd2e; }
+.green { background: #27c93f; }
+
+/* Menu Sidebar */
+.sidebar-item {
+  background: #ffeb3b;
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 10px 15px;
+  text-decoration: none;
+  color: black;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  transition: 0.3s;
+}
+.sidebar-trigger-top {
+  position: fixed;
+  left: 20px; 
+  top: 9px; /* UBAH INI: Kurangi angkanya (misal 10px atau 8px) untuk menaikkan tombol */
+  height: auto; /* Ubah ke auto agar tidak terkunci tinggi navbar */
+  display: flex;
+  align-items: center;
+  padding: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 10001;
+}
+
+.oval-bg {
+  display: flex;
+  gap: 6px;
+  padding: 6px 15px; /* Sedikit dikecilkan padding atas-bawahnya agar lebih ramping */
+  background: #ff7d4d;
+  border: 2px solid black;
+  border-radius: 50px;
+  transition: 0.3s;
+  box-shadow: 4px 4px 0px rgba(0,0,0,0.15);
+}
+
+/* Efek Hover biar keren */
+.sidebar-trigger-top:hover .oval-bg {
+  transform: scale(1.1);
+  background: white; /* Berubah putih saat dihover */
+}
+
+/* Pastikan CSS .dot tetap seperti ini */
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid black;
+}
+.red { background: #ff5f56; }
+.yellow { background: #ffbd2e; }
+.green { background: #27c93f; }
+
+/* ===== CAMPUS SECTION ===== */
+#campus { 
+  display: none; /* Tetap sembunyi di awal */
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 80px 20px;
+  background: #b3e5fc;
+  box-sizing: border-box;
+}
+
+.campus-slider {
+  width: 100%; /* Ubah ke 100% agar pas di layar */
+  max-width: 1100px;
+  margin: 0 auto;
+  overflow-x: auto; /* Memungkinkan geser kanan-kiri */
+  padding: 20px 0;
+  cursor: grab;
+  -webkit-overflow-scrolling: touch; /* Biar smooth di HP */
+}
+
+/* Hilangkan scrollbar tapi tetap bisa digeser */
+.campus-slider::-webkit-scrollbar {
+  display: none;
+}
+
+.slider-track {
+  display: flex;
+  gap: 20px;
+  padding: 10px;
+  width: max-content; /* Track akan memanjang mengikuti jumlah foto */
+}
+
+.slider-track img {
+  width: 280px; 
+  height: 200px;
+  object-fit: cover;
+  border: 2px solid black;
+  border-radius: 15px;
+  box-shadow: 6px 6px 0px rgba(0,0,0,0.1);
+  flex-shrink: 0; /* Mencegah foto menciut */
+}
+/* ===== TAMBAHKAN INI UNTUK ANIMASI HOVER ===== */
+.slider-track img {
+  /* Aturan lama tetap di sini, tapi tambahkan ini: */
+  transition: 0.3s ease; /* Biar gerakan membesar jadi smooth */
+  will-change: transform; /* Mengoptimalkan performa animasi */
+}
+
+.slider-track img:hover {
+  transform: scale(1.08) translateY(-5px); /* Membesar & terangkat sedikit */
+  border-color: #2e5bd3; /* Berubah warna border (pilih warna kesukaanmu) */
+  box-shadow: 10px 10px 0px rgba(0,0,0,0.2); /* Shadow jadi lebih tegas */
+  z-index: 10; /* Biar foto yang di-hover menumpuk di atas yang lain */
+}
+/* ===== SOSMED SIDEBAR PILAR VERTIKAL FULL ===== */
+.sosmed-sidebar {
+  position: fixed;
+  right: 0;          /* Nempel ke paling kanan */
+  top: 0;
+  height: 100vh;     /* Full dari atas sampai bawah layar */
+  width: 47px;       /* Lebar pilarnya */
+  
+  /* Tampilan Pilar */
+  background: #c21047; 
+  border-left: 4px solid black; /* Garis pembatas tegas di kiri pilar */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Ikon-ikonnya kumpul di tengah secara vertikal */
+  align-items: center;
+  gap: 20px;
+  z-index: 9997;
+  box-shadow: -5px 0px 0px rgba(0,0,0,0.05); /* Bayangan halus ke arah kiri */
+}
+
+.sosmed-item {
+  width: 30px;
+  height: 30px;
+  background: #f9f3db;      /* Warna krem favorit */
+  border: 2px solid black;  /* Border tegas */
+  border-radius: 12px;      /* Bentuk kotak melengkung lucu */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: black;
+  font-size: 20px;
+  
+  /* ANIMASI KUBIK FAVORIT KAMU */
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Efek Hover Mantul */
+.sosmed-item:hover {
+  transform: scale(1.2) rotate(-5deg); /* Membesar & miring dikit */
+  background: #ffd84d;                 /* Kuning nav */
+  color: #d46cff;                      /* Ikon jadi ungu */
+  box-shadow: 4px 4px 0px black;
+}
+
+/* BIAR KONTEN GAK KETUTUP: Tambahkan margin di body atau section utama */
+body {
+  margin-right: 47px; /* Memberi ruang agar konten utama tidak tertabrak pilar */
+}
+
+/* Sembunyikan di HP karena layar HP sempit banget */
+@media (max-width: 768px) {
+  .sosmed-sidebar { display: none; }
+  body { margin-right: 0; }
+}
 </style>
 </head>
 
@@ -202,17 +407,39 @@ footer { text-align: center; padding: 20px; background: #2e5bd3; color: white; }
 <header>
 <!-- NAVIGATION -->
 <nav>
-  <a href="#home">Home</a>
-  <a href="#bio">Bio</a>
-  <a href="#profile">Saski’s Profile</a> <!-- INI BARU -->
-  <a href="#love">Things I Love</a>
-  <a href="#contact">Contact</a>
+  <a href="#home" onclick="showMainPage()">Home</a>
+  <a href="#bio" onclick="showMainPage()">Bio</a>
+  <a href="#profile" onclick="showMainPage()">Saski’s Profile</a>
+ 
 </nav>
 </header>
 <!-- HERO -->
 <main>
 <section id="home" class="hero-image"></section>
 
+<div class="sidebar-trigger" onclick="toggleSidebar()">
+  <div class="dot red"></div>
+  <div class="dot yellow"></div>
+  <div class="dot green"></div>
+</div>
+
+<div class="sidebar-trigger-top" onclick="toggleSidebar()">
+  <div class="oval-bg">
+    <div class="dot red"></div>
+    <div class="dot yellow"></div>
+    <div class="dot green"></div>
+  </div>
+</div>
+
+<div id="mySidebar" class="sidebar-container">
+  <a href="#home" class="sidebar-item" onclick="showMainPage(); toggleSidebar();">Home <span>01</span></a>
+ 
+  <a href="javascript:void(0)" class="sidebar-item" onclick="showLovePage(); toggleSidebar();">Loves <span>02</span></a>
+  <a href="javascript:void(0)" class="sidebar-item" onclick="showCampusPage(); toggleSidebar();">Campus Life <span>03</span></a>
+</div>
+<div id="sidebarOverlay" class="sidebar-overlay" onclick="toggleSidebar()" 
+     style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.4); z-index:9998;">
+</div>
 <!-- BIO -->
 <section id="bio" class="bio-section">
   <div class="bio-card">
@@ -372,24 +599,36 @@ footer { text-align: center; padding: 20px; background: #2e5bd3; color: white; }
 </div>
 </section>
 
-<!-- CONTACT -->
-<section id="contact" class="contact-section">
-  <h2>Contact Me 💌</h2>
-  <p>Email: saskiamaynnanda20@email.com</p>
+<section id="campus"> 
+  <h2>Campus Life 🏫</h2>
+  <p>A little bit of my journey at UIB!</p>
 
-  <div class="social">
-    <button>Instagram @sasskiamay</button>
-    <button>YouTube sasskiamay</button>
+  <div class="campus-slider">
+    <div class="slider-track">
+      <img src="uib1.jpeg" alt="Campus 1">
+      <img src="uib2.jpeg" alt="Campus 2">
+      <img src="uib3.jpeg" alt="Campus 3">
+      <img src="uib4.jpeg" alt="Campus 4">
+      <img src="uib5.jpeg" alt="Campus 5">
+      <img src="uib15.jpeg" alt="Campus 6">
+      <img src="uib14.jpeg" alt="Campus 7">
+      <img src="uib13.jpeg" alt="Campus 8">
+      <img src="uib8.jpeg" alt="Campus 9">
+      <img src="uib10.jpeg" alt="Campus 10">
+      <img src="uib11.jpeg" alt="Campus 11">
+      <img src="uib12.jpeg" alt="Campus 12">
+    </div>
   </div>
+  
+  <button onclick="showMainPage()" style="margin-top:20px; padding:10px 20px; cursor:pointer; border-radius:20px; border:2px solid black; font-weight:600;">Back to Home</button>
 </section>
-
-
 <script>
+// 1. Fungsi Popup
 function openPopup(id) {
   const popup = document.getElementById(id);
   if (popup) {
     popup.style.display = "flex";
-    document.body.style.overflow = "hidden"; // Biar background gak bisa di-scroll saat popup buka
+    document.body.style.overflow = "hidden";
   }
 }
 
@@ -397,10 +636,89 @@ function closePopup(id) {
   const popup = document.getElementById(id);
   if (popup) {
     popup.style.display = "none";
-    document.body.style.overflow = "auto"; // Aktifkan scroll lagi
+    document.body.style.overflow = "auto";
   }
 }
+
+// 2. Fungsi Sidebar
+function toggleSidebar() {
+  const sidebar = document.getElementById("mySidebar");
+  const overlay = document.getElementById("sidebarOverlay");
+  
+  if (sidebar && overlay) {
+    sidebar.classList.toggle("active");
+    overlay.style.display = sidebar.classList.contains("active") ? "block" : "none";
+  }
+}
+
+// 3. FUNGSI HALAMAN UTAMA (Home, Bio, Profile saja)
+function showMainPage() {
+    // List semua section yang ada di webmu
+    const allSections = ['home', 'bio', 'profile', 'love', 'campus'];
+    
+    allSections.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+            // Hanya munculkan 3 section utama, sisanya sembunyikan
+            if (id === 'home' || id === 'bio' || id === 'profile') {
+                el.style.display = 'block';
+            } else {
+                el.style.display = 'none';
+            }
+        }
+    });
+    window.scrollTo(0, 0);
+}
+
+// 4. FUNGSI HALAMAN LOVE (Terpisah)
+function showLovePage() {
+    const sectionsToHide = ['home', 'bio', 'profile', 'campus'];
+    sectionsToHide.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.style.display = 'none';
+    });
+
+    const loveSection = document.getElementById('love');
+    if (loveSection) loveSection.style.display = 'flex';
+    
+    window.scrollTo(0, 0);
+}
+
+// 5. FUNGSI HALAMAN CAMPUS (Terpisah)
+function showCampusPage() {
+    const sectionsToHide = ['home', 'bio', 'profile', 'love'];
+    sectionsToHide.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.style.display = 'none';
+    });
+
+    const campusSection = document.getElementById('campus');
+    if (campusSection) campusSection.style.display = 'flex';
+    
+    window.scrollTo(0, 0);
+}
 </script>
+<div class="sosmed-sidebar">
+  
+  <a href="mailto:saskiamaynanda20@gmail.com" class="sosmed-item">
+    <i class="fas fa-envelope"></i>
+  </a>
+  
+  <a href="https://www.instagram.com/username_kamu" target="_blank" class="sosmed-item">
+    <i class="fab fa-instagram"></i>
+  </a>
+  
+  <a href="https://www.youtube.com/@channel_kamu" target="_blank" class="sosmed-item">
+    <i class="fab fa-youtube"></i>
+  </a>
+  
+  <a href="https://www.tiktok.com/@username_kamu" target="_blank" class="sosmed-item">
+    <i class="fab fa-tiktok"></i>
+  </a>
+
+</div>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <footer>
   © 2026 Saseu ♡ just a page of my little world
   <br>
