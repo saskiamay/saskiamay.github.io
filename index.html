@@ -402,55 +402,81 @@ body {
   .sosmed-sidebar { display: none; }
   body { margin-right: 0; }
 }
-/* ===== CSS KHUSUS HP (MEDIA QUERY) ===== */
+
+/* ===== RESPONSIVE FIXES ===== */
 @media (max-width: 768px) {
-  /* 1. Hero Image */
-  .hero-image {
-    height: 50vh !important;
-    background-size: contain !important;
-    margin-top: 60px;
+  /* 1. Body & Layout */
+  body { 
+    margin-right: 0 !important; /* Hilangkan margin pilar sosmed di HP */
+    font-size: 14px; 
   }
 
-  /* 2. Hilangkan Pilar Merah & Buat Ikon Melayang */
-  .sosmed-sidebar {
-    display: flex !important;
-    position: fixed !important;
-    right: 20px !important;
-    bottom: 30px !important;
-    top: auto !important;
-    height: auto !important;
-    width: auto !important;
-    background: transparent !important; /* Pilar hilang */
-    border: none !important;
-    flex-direction: column;
-    gap: 15px;
-    z-index: 10002; /* Paling atas */
+  /* 2. Navbar - Buat teks lebih kecil supaya tidak tumpuk */
+  nav { 
+    gap: 15px; 
+    padding: 12px; 
+  }
+  nav a { font-size: 14px; }
+
+  /* 3. Hero - Turunkan tingginya sedikit agar tidak terlalu panjang */
+  .hero-image { height: 60vh; }
+
+  /* 4. Bio Section */
+  .bio-section { padding: 40px 20px; }
+  .bio-card { 
+    flex-direction: column; 
+    align-items: center; 
+    text-align: center; 
+    padding: 20px;
+  }
+  .bio-card img { 
+    width: 180px; /* Foto lebih kecil di HP */
+    margin-bottom: 20px;
   }
 
-  .sosmed-item {
-    width: 45px !important;
-    height: 45px !important;
-    border-radius: 50% !important; /* Jadi Bulat */
-    background: #c21047 !important; /* Warna merah pilar tadi */
-    color: white !important;
-    box-shadow: 0px 4px 10px rgba(0,0,0,0.3) !important;
-  }
+  /* 5. Profile Table - PENTING: Biar tabel bisa di-scroll horizontal */
+  .table-page { padding: 15px; overflow-x: auto; }
+  .bio-table { font-size: 13px; }
+  .bio-table th, .bio-table td { padding: 8px; }
 
-  /* 3. Konten Jadi Full */
-  body {
-    margin-right: 0 !important;
-  }
-
-  /* 4. Bio Card Adjustments */
-  .bio-card {
-    flex-direction: column !important;
+  /* 6. Love Section - Tombol oval jadi lebih rapi */
+  .love-tags {
+    display: flex;
+    flex-direction: column; /* Berderet ke bawah di HP */
     align-items: center;
-    text-align: center;
+    gap: 10px;
+  }
+  .love-tags span {
+    width: 80%; /* Biar seragam lebarnya */
+    min-width: unset;
+    padding: 10px 20px;
+  }
+
+  /* 7. Popups */
+  .popup-content {
+    width: 85% !important;
     padding: 20px !important;
   }
+  .popup-grid {
+    grid-template-columns: 1fr 1fr !important; /* Tetap 2 kolom tapi gambar kecil */
+    gap: 10px !important;
+  }
 
-  .bio-card img {
-    width: 180px !important;
+  /* 8. Campus Slider */
+  .slider-track img {
+    width: 220px; /* Ukuran foto kampus lebih kecil di HP */
+    height: 150px;
+  }
+
+  /* 9. Sosmed Sidebar - Sembunyikan pilar dan ganti ke bawah (optional) */
+  .sosmed-sidebar {
+    display: none; /* Sesuai kode awalmu, ini disembunyikan di HP */
+  }
+
+  /* 10. Sidebar Menu (Tombol Tiga Titik) */
+  .sidebar-trigger-top {
+    left: 10px;
+    top: 5px;
   }
 }
 </style>
