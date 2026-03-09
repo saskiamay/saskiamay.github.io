@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Saseu's World</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap" rel="stylesheet">
@@ -402,6 +403,76 @@ body {
   .sosmed-sidebar { display: none; }
   body { margin-right: 0; }
 }
+/* Update Global */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Update Navbar: Biar gak numpuk di HP */
+nav {
+  gap: 15px; 
+  padding: 10px;
+  flex-wrap: wrap; /* Supaya menu turun kalau gak muat */
+}
+
+/* Update Bio Card */
+.bio-card {
+  flex-direction: column; /* Default stack di layar kecil */
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+}
+
+@media (min-width: 769px) {
+  .bio-card {
+    flex-direction: row; /* Kembali ke samping di layar Laptop */
+    text-align: left;
+  }
+}
+
+/* Update Table: Biar gak keluar layar (Horizontal Scroll) */
+.table-page {
+  overflow-x: auto;
+}
+.bio-table {
+  min-width: 500px; /* Memaksa scroll dalam container kalau layar kekecilan */
+}
+
+/* Update Love Tags: Biar tombolnya enak diklik di HP */
+.love-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+.love-tags span {
+  min-width: 140px;
+  padding: 10px 20px;
+}
+
+/* Update Popup Grid: Jadi 1 kolom di HP, 2 di Laptop */
+.popup-grid {
+  grid-template-columns: 1fr !important;
+}
+
+@media (min-width: 600px) {
+  .popup-grid {
+    grid-template-columns: 1fr 1fr !important;
+  }
+}
+
+/* Perbaiki Hero Image agar proporsional */
+.hero-image {
+  height: 60vh; /* Lebih pendek di mobile agar user tahu ada konten di bawah */
+  background-size: cover;
+}
+
+@media (min-width: 769px) {
+  .hero-image {
+    height: 94vh;
+  }
+}
 </style>
 </head>
 
@@ -451,7 +522,6 @@ body {
 
     <div class="bio-desc">  
       <h2>Who is Saski?</h2>
-
 
       <p>
         "Hi! Just call me Sas^^. I'm 18 but turning 19 soon. Currently surviving Information Systems at Universitas Internasional Batam.
