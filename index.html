@@ -402,6 +402,57 @@ body {
   .sosmed-sidebar { display: none; }
   body { margin-right: 0; }
 }
+/* ===== CSS KHUSUS HP (MEDIA QUERY) ===== */
+@media (max-width: 768px) {
+  /* 1. Hero Image */
+  .hero-image {
+    height: 50vh !important;
+    background-size: contain !important;
+    margin-top: 60px;
+  }
+
+  /* 2. Hilangkan Pilar Merah & Buat Ikon Melayang */
+  .sosmed-sidebar {
+    display: flex !important;
+    position: fixed !important;
+    right: 20px !important;
+    bottom: 30px !important;
+    top: auto !important;
+    height: auto !important;
+    width: auto !important;
+    background: transparent !important; /* Pilar hilang */
+    border: none !important;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 10002; /* Paling atas */
+  }
+
+  .sosmed-item {
+    width: 45px !important;
+    height: 45px !important;
+    border-radius: 50% !important; /* Jadi Bulat */
+    background: #c21047 !important; /* Warna merah pilar tadi */
+    color: white !important;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.3) !important;
+  }
+
+  /* 3. Konten Jadi Full */
+  body {
+    margin-right: 0 !important;
+  }
+
+  /* 4. Bio Card Adjustments */
+  .bio-card {
+    flex-direction: column !important;
+    align-items: center;
+    text-align: center;
+    padding: 20px !important;
+  }
+
+  .bio-card img {
+    width: 180px !important;
+  }
+}
 </style>
 </head>
 
