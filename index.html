@@ -7,9 +7,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
+@font-face {
+font-family: 'helvetica'; 
+src: url('Helvetica.ttf'); /* Pastikan nama file sesuai, termasuk huruf besar/kecilnya */
+}
 /* ===== GLOBAL ===== */
 html { scroll-behavior: smooth; }
-body { margin: 0; font-family: 'Fredoka', sans-serif; background: #f4efe6; }
+body { margin: 0; font-family: 'helvetica', sans-serif; font-size: 16px; background: #f4efe6; }
 
 /* ===== NAVBAR ===== */
 nav {
@@ -28,7 +32,7 @@ nav a:hover { color: #d46cff; transform: scale(1.1); }
 
 /* ===== BIO ===== */
 .bio-section { 
-  padding: 80px 60px; 
+  padding: 90px 60px; 
   background: #008471; 
   margin-top: -48px;  /* NARIK SEDIKIT: Biar nempel sempurna ke hero */
   position: relative;
@@ -38,16 +42,15 @@ nav a:hover { color: #d46cff; transform: scale(1.1); }
   display: flex; align-items: flex-start; gap: 40px;
   background: #ffc9e3; padding: 40px; border: 4px solid black;
 }
-.bio-card img { width: 200px; flex-shrink: 0; border: 5px solid white; box-shadow: 5px 5px 0 black; }
-.bio-desc { max-width: 500px; }
-.bio-desc h2 { margin-top: 0; font-size: 26px; }
-.bio-desc p { font-size: 16px; line-height: 1.7; margin-bottom: 15px; }
-.dream { color: #2e5bd3; font-weight: 600; }
+.bio-card img { width: 220px; flex-shrink: 0; border: 5px solid white; box-shadow: 5px 5px 0 black; }
+.bio-desc { max-width: 800px; }
+.bio-desc h2 { margin-top: 0px; font-size: 26px; margin-bottom: 35px; }
+.bio-desc p { font-size: 16px; line-height: 2; margin-bottom: 20px; }
 
 /* ===== PROFILE TABLE ===== */
 .table-page { background: #ffefd1; padding: 20px; }
 .table-title { text-align: center; margin-bottom: 15px; font-weight: 600; color: #000000; }
-.bio-table { width: 100%; border-collapse: collapse; }
+.bio-table { width: 100%; border-collapse: collapse;  margin-bottom: 40px; }
 .bio-table th, .bio-table td { border: 3px solid black; padding: 10px 14px; text-align: left; }
 .bio-table tr:nth-child(odd) th, .bio-table tr:nth-child(odd) td { background: #e8d9ed; }
 .bio-table tr:nth-child(even) th, .bio-table tr:nth-child(even) td { background: #d2b3db; }
@@ -449,13 +452,20 @@ body {
     <div class="bio-desc">  
       <h2>Who is Saski?</h2>
 
-      <p>
-        Hi! You can call me Sas^^ - I am 19 years old and currently a university student majoring in Information System at Universitas Internasional Batam. I have a strong interest in multimedia, especially in creating designs that are fun, colorful, and full of cheerful vibes. I enjoy exploring creative ideas and bringing them to life through vibrant visual works.
-      </p>
 
-      <p class="dream">
-        Dreaming of travelling the world and collecting beautiful memories
-      </p>
+      <p>
+        "Hi! Just call me Sas^^. I'm 18 but turning 19 soon. Currently surviving Information Systems at Universitas Internasional Batam.
+        I'm super into multimedia, basically just a girl who loves creating fun, colorful, and cheerful designs.
+    
+        <br> 
+        <br>
+        Well, to be honest, I’m also beyond excited about the idea of traveling the world and collecting all those pretty memories.
+        All while growing into the best version of myself along the way.
+        Hoping to keep leveling up my skills and creating visuals that don't just look good, but also bring 100% happy vibes to everyone!"
+        
+     </p>
+
+     
     </div>
 
   </div>
