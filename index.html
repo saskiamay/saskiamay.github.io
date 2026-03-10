@@ -34,9 +34,9 @@ nav a:hover { color: #d46cff; transform: scale(1.1); }
 .bio-section { 
   padding: 90px 60px; 
   background: #008471; 
-  margin-top: -48px;  /* NARIK SEDIKIT: Biar nempel sempurna ke hero */
+  margin-top: -48px;  
   position: relative;
-  z-index: 5;        /* Biar dia menimpa sisa celah di bawah hero */
+  z-index: 5;        
 }
 .bio-card {
   display: flex; align-items: flex-start; gap: 40px;
@@ -74,15 +74,15 @@ nav a:hover { color: #d46cff; transform: scale(1.1); }
 /* Membuat tombol menjadi OVAL */
 .love-tags span {
   display: inline-block;
-  padding: 12px 30px;      /* Padding atas-bawah 12, kiri-kanan 30 biar lonjong */
+  padding: 12px 30px;      
   margin: 10px;
-  border-radius: 50px;     /* Angka besar ini yang bikin OVAL */
-  min-width: 160px;        /* Biar ukuran antar tombol lebih seimbang */
+  border-radius: 50px;     
+  min-width: 160px;        
   font-weight: 600;
   cursor: pointer;
-  border: 2px solid black; /* Biar lebih tegas */
+  border: 2px solid black; 
   transition: 0.3s;
-  text-align: center;      /* Biar teks di tengah */
+  text-align: center;      
 }
 
 /* Warna-warni Tombol */
@@ -115,23 +115,23 @@ nav a:hover { color: #d46cff; transform: scale(1.1); }
 /* Kotak putih/berwarna di tengah */
 .popup-content {
   width: 90% !important;
-  max-width: 500px !important; /* Lebar maksimal kotak */
-  min-height: 300px;           /* Tinggi minimal biar gak ciut */
+  max-width: 500px !important; 
+  min-height: 300px;           
   padding: 30px !important;
   border: 3px solid black !important;
   position: relative !important;
-  max-height: 85vh !important; /* Biar gak melebihi tinggi layar HP/Laptop */
-  overflow-y: auto !important; /* Supaya bisa di-scroll kalau foto banyak */
+  max-height: 85vh !important; 
+  overflow-y: auto !important; 
   box-shadow: 10px 10px 0px rgba(0,0,0,0.2) !important;
-  border-radius: 15px !important; /* Kasih sedikit lengkungan biar manis */
+  border-radius: 15px !important; 
 }
 
 /* Warna latar belakang khusus untuk tiap popup */
-#moviePopup .popup-content { background-color: #a6cff2!important; } /* Pink */
-#dramaPopup .popup-content { background-color: #f2619c  !important; } /* Biru */
-#musicPopup .popup-content { background-color: #f7f2e8 !important; } /* Kuning */
-#vlogPopup .popup-content { background-color: #c1eaa9 !important; }  /* Hijau */
-#novelPopup .popup-content { background-color: #d1caea!important; } /* Ungu */
+#moviePopup .popup-content { background-color: #a6cff2!important; } 
+#dramaPopup .popup-content { background-color: #f2619c  !important; } 
+#musicPopup .popup-content { background-color: #f7f2e8 !important; } 
+#vlogPopup .popup-content { background-color: #c1eaa9 !important; }  
+#novelPopup .popup-content { background-color: #d1caea!important; } 
 
 .close {
   position: absolute; top: 10px; right: 15px; font-size: 30px;
@@ -139,7 +139,7 @@ nav a:hover { color: #d46cff; transform: scale(1.1); }
 }
 .popup-grid {
   display: grid !important;
-  grid-template-columns: 1fr 1fr !important; /* Tetap 2 kolom */
+  grid-template-columns: 1fr 1fr !important; 
   gap: 20px !important;
   margin-top: 20px !important;
   padding-bottom: 20px;
@@ -207,18 +207,17 @@ footer { text-align: center; padding: 20px; background: #2e5bd3; color: white; }
 }
 
 
-/* Sidebar Container (Melayang di atas konten) */
 .sidebar-container {
   position: fixed;
-  left: -295px; /* Sembunyi di kiri */
+  left: -295px; 
   top: 0;
   height: 100vh;
   width: 250px;
   background: #ff7d4d;
   border-right: 4px solid black;
-  z-index: 10000; /* Di bawah tombol pemicu */
+  z-index: 10000; 
   transition: 0.4s ease;
-  padding: 80px 20px 20px 20px; /* Padding atas agar menu tidak tertutup tombol pemicu */
+  padding: 80px 20px 20px 20px;
   display: flex;
   flex-direction: column;
   gap: 15px;
@@ -251,8 +250,8 @@ footer { text-align: center; padding: 20px; background: #2e5bd3; color: white; }
 .sidebar-trigger-top {
   position: fixed;
   left: 20px; 
-  top: 8.5px; /* UBAH INI: Kurangi angkanya (misal 10px atau 8px) untuk menaikkan tombol */
-  height: auto; /* Ubah ke auto agar tidak terkunci tinggi navbar */
+  top: 8.5px; 
+  height: auto; 
   display: flex;
   align-items: center;
   padding: 0;
@@ -265,7 +264,7 @@ footer { text-align: center; padding: 20px; background: #2e5bd3; color: white; }
 .oval-bg {
   display: flex;
   gap: 6px;
-  padding: 6px 15px; /* Sedikit dikecilkan padding atas-bawahnya agar lebih ramping */
+  padding: 6px 15px; 
   background: #ff7d4d;
   border: 2px solid black;
   border-radius: 50px;
@@ -273,13 +272,13 @@ footer { text-align: center; padding: 20px; background: #2e5bd3; color: white; }
   box-shadow: 4px 4px 0px rgba(0,0,0,0.15);
 }
 
-/* Efek Hover biar keren */
+/* Efek Hover */
 .sidebar-trigger-top:hover .oval-bg {
   transform: scale(1.1);
-  background: white; /* Berubah putih saat dihover */
+  background: white; 
 }
 
-/* Pastikan CSS .dot tetap seperti ini */
+
 .dot {
   width: 12px;
   height: 12px;
@@ -292,7 +291,7 @@ footer { text-align: center; padding: 20px; background: #2e5bd3; color: white; }
 
 /* ===== CAMPUS SECTION ===== */
 #campus { 
-  display: none; /* Tetap sembunyi di awal */
+  display: none; 
   min-height: 100vh;
   flex-direction: column;
   justify-content: center;
@@ -304,16 +303,16 @@ footer { text-align: center; padding: 20px; background: #2e5bd3; color: white; }
 }
 
 .campus-slider {
-  width: 100%; /* Ubah ke 100% agar pas di layar */
+  width: 100%; 
   max-width: 1100px;
   margin: 0 auto;
-  overflow-x: auto; /* Memungkinkan geser kanan-kiri */
+  overflow-x: auto; 
   padding: 20px 0;
   cursor: grab;
-  -webkit-overflow-scrolling: touch; /* Biar smooth di HP */
+  -webkit-overflow-scrolling: touch; 
 }
 
-/* Hilangkan scrollbar tapi tetap bisa digeser */
+
 .campus-slider::-webkit-scrollbar {
   display: none;
 }
@@ -322,7 +321,7 @@ footer { text-align: center; padding: 20px; background: #2e5bd3; color: white; }
   display: flex;
   gap: 20px;
   padding: 10px;
-  width: max-content; /* Track akan memanjang mengikuti jumlah foto */
+  width: max-content; 
 }
 
 .slider-track img {
@@ -334,45 +333,44 @@ footer { text-align: center; padding: 20px; background: #2e5bd3; color: white; }
   box-shadow: 6px 6px 0px rgba(0,0,0,0.1);
   flex-shrink: 0; /* Mencegah foto menciut */
 }
-/* ===== TAMBAHKAN INI UNTUK ANIMASI HOVER ===== */
+/* =====  ANIMASI HOVER ===== */
 .slider-track img {
-  /* Aturan lama tetap di sini, tapi tambahkan ini: */
-  transition: 0.3s ease; /* Biar gerakan membesar jadi smooth */
-  will-change: transform; /* Mengoptimalkan performa animasi */
+  transition: 0.3s ease; 
+  will-change: transform; 
 }
 
 .slider-track img:hover {
-  transform: scale(1.08) translateY(-5px); /* Membesar & terangkat sedikit */
-  border-color: #2e5bd3; /* Berubah warna border (pilih warna kesukaanmu) */
-  box-shadow: 10px 10px 0px rgba(0,0,0,0.2); /* Shadow jadi lebih tegas */
-  z-index: 10; /* Biar foto yang di-hover menumpuk di atas yang lain */
+  transform: scale(1.08) translateY(-5px); 
+  border-color: #2e5bd3; 
+  box-shadow: 10px 10px 0px rgba(0,0,0,0.2); 
+  z-index: 10; 
 }
-/* ===== SOSMED SIDEBAR PILAR VERTIKAL FULL ===== */
+
 .sosmed-sidebar {
   position: fixed;
-  right: 0;          /* Nempel ke paling kanan */
+  right: 0;          
   top: 0;
-  height: 120vh;     /* Full dari atas sampai bawah layar */
-  width: 44px;       /* Lebar pilarnya */
+  height: 120vh;     
+  width: 44px;       
   
   /* Tampilan Pilar */
   background: #c21047; 
-  border-left: 4px solid black; /* Garis pembatas tegas di kiri pilar */
+  border-left: 4px solid black; 
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Ikon-ikonnya kumpul di tengah secara vertikal */
+  justify-content: center; 
   align-items: center;
   gap: 20px;
   z-index: 9997;
-  box-shadow: -5px 0px 0px rgba(0,0,0,0.05); /* Bayangan halus ke arah kiri */
+  box-shadow: -5px 0px 0px rgba(0,0,0,0.05); 
 }
 
 .sosmed-item {
   width: 30px;
   height: 30px;
-  background: #f9f3db;      /* Warna krem favorit */
-  border: 2px solid black;  /* Border tegas */
-  border-radius: 12px;      /* Bentuk kotak melengkung lucu */
+  background: #f9f3db;      
+  border: 2px solid black;  
+  border-radius: 12px;      
   display: flex;
   justify-content: center;
   align-items: center;
@@ -380,24 +378,23 @@ footer { text-align: center; padding: 20px; background: #2e5bd3; color: white; }
   color: black;
   font-size: 20px;
   
-  /* ANIMASI KUBIK FAVORIT KAMU */
+
   transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
-/* Efek Hover Mantul */
+
 .sosmed-item:hover {
-  transform: scale(1.2) rotate(-5deg); /* Membesar & miring dikit */
-  background: #ffd84d;                 /* Kuning nav */
-  color: #d46cff;                      /* Ikon jadi ungu */
+  transform: scale(1.2) rotate(-5deg); 
+  background: #ffd84d;                 
+  color: #d46cff;                      
   box-shadow: 4px 4px 0px black;
 }
 
-/* BIAR KONTEN GAK KETUTUP: Tambahkan margin di body atau section utama */
 body {
-  margin-right: 47px; /* Memberi ruang agar konten utama tidak tertabrak pilar */
+  margin-right: 47px; 
 }
 
-/* Sembunyikan di HP karena layar HP sempit banget */
+
 @media (max-width: 768px) {
   .sosmed-sidebar { display: none; }
   body { margin-right: 0; }
