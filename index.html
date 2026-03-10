@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Saseu's World</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap" rel="stylesheet">
@@ -404,85 +403,7 @@ body {
   body { margin-right: 0; }
 }
 
-/* Update Global */
-body {
-    margin-right: 47px; /* Untuk desktop */
-    overflow-x: hidden; /* Mencegah scroll horizontal yang tidak sengaja */
-}
 
-/* Update Navbar agar link tidak bertumpuk */
-nav {
-    flex-wrap: wrap;
-    gap: 15px;
-    padding: 10px;
-}
-
-/* Hero Image agar tidak gepeng di HP */
-.hero-image {
-    height: 60vh; /* Lebih pendek di HP agar tidak capek scroll */
-    background-size: cover;
-}
-
-/* Update Bio Section */
-.bio-section {
-    padding: 40px 20px;
-}
-
-.bio-card {
-    flex-direction: column; /* Gambar di atas, teks di bawah */
-    align-items: center;
-    text-align: center;
-    gap: 20px;
-    padding: 20px;
-}
-
-.bio-card img {
-    width: 150px; /* Ukuran foto lebih kecil di HP */
-}
-
-/* Table Responsive */
-.table-page {
-    overflow-x: auto; /* Agar tabel bisa di-swipe kalau kepanjangan */
-}
-
-.bio-table {
-    min-width: 500px; /* Menjaga teks tabel tidak berantakan */
-}
-
-/* Media Queries untuk HP (Layar di bawah 768px) */
-@media (max-width: 768px) {
-    body {
-        margin-right: 0; /* Hilangkan margin pilar sosmed di HP */
-    }
-    
-    .sosmed-sidebar {
-        display: none; /* Sudah kamu buat, pastikan ini ada */
-    }
-
-    .hero-image {
-        height: 50vh;
-        margin-top: 60px; /* Beri ruang karena nav mungkin lebih tebal */
-    }
-
-    .bio-desc h2 {
-        font-size: 22px;
-    }
-
-    .love-tags span {
-        width: 80%; /* Tombol love memenuhi layar */
-        min-width: unset;
-    }
-
-    .popup-content {
-        width: 95% !important;
-        padding: 15px !important;
-    }
-
-    .popup-grid {
-        grid-template-columns: 1fr 1fr !important; /* Tetap 2 kolom tapi lebih rapat */
-        gap: 10px !important;
-    }
-}
 </style>
 </head>
 
