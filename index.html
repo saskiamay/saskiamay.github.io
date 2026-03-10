@@ -26,14 +26,10 @@ nav a:hover { color: #d46cff; transform: scale(1.1); }
 
 /* ===== HERO ===== */
 .hero-image {
-  height: 94vh; 
-  background: url("hero.svg") no-repeat center center;
-  background-size: cover; 
-  margin-top: 40px;
-  width: 100%;
-  /* Tambahkan transition agar smooth saat resize */
-  transition: height 0.3s ease;
+  height: 94vh; background: url("hero.svg") no-repeat center center;
+  background-size: cover; margin-top: 40px;
 }
+
 /* ===== BIO ===== */
 .bio-section { 
   padding: 90px 60px; 
@@ -407,25 +403,7 @@ body {
   body { margin-right: 0; }
 }
 
-/* Responsif untuk Mobile */
-@media (max-width: 768px) {
-  .hero-image {
-    /* Mengurangi tinggi di mobile agar tidak terlalu panjang saat scroll */
-    height: 50vh; 
-    
-    /* 'contain' memastikan seluruh gambar terlihat tanpa terpotong, 
-       atau tetap gunakan 'cover' jika ingin gambar memenuhi lebar layar */
-    background-size: cover; 
-    
-    /* Menghilangkan margin jika di mobile ingin terlihat full-width */
-    margin-top: 50px; 
-  }
-  
-  /* Tambahan: Pastikan body tidak meluber ke samping */
-  body {
-    overflow-x: hidden;
-  }
-}
+
 </style>
 </head>
 
