@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Saseu's World</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap" rel="stylesheet">
@@ -26,8 +27,11 @@ nav a:hover { color: #d46cff; transform: scale(1.1); }
 
 /* ===== HERO ===== */
 .hero-image {
-  height: 100vh; background: url("hero.svg") no-repeat center center;
-  background-size: cover; margin-top: 40px;
+  width: 100%;
+  min-height: 100vh;
+  background: url("hero.svg") no-repeat center center;
+  background-size: cover;
+  margin-top: 60px;
 }
 
 /* ===== BIO ===== */
@@ -400,7 +404,14 @@ body {
   body { margin-right: 0; }
 }
 
+@media (max-width:768px){
 
+  .hero-image{
+    min-height: 60vh;
+    background-position: center;
+  }
+
+}
 </style>
 </head>
 
