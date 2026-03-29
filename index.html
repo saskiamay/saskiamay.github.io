@@ -353,7 +353,7 @@ footer { text-align: center; padding: 20px; background: #2e5bd3; color: white; }
   position: fixed;
   right: 0;          
   top: 0;
-  height: 120vh;     
+  height: 105vh;     
   width: 44px;       
   
   /* Tampilan Pilar */
@@ -403,7 +403,178 @@ body {
   body { margin-right: 0; }
 }
 
+/* ===== EDUCATION & EXPERIENCE ===== */
+.edu-exp-section {
+  padding: 80px 40px;
+  text-align: center;
+  background: #ffe4f0;
+}
 
+.edu-exp-title {
+  font-size: 28px;
+  margin-bottom: 40px;
+}
+
+.timeline {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.timeline-item {
+  background: #ffffff;
+  border: 3px solid black;
+  padding: 20px 25px;
+  text-align: left;
+  border-radius: 15px;
+  box-shadow: 6px 6px 0px rgba(0,0,0,0.15);
+  transition: 0.3s;
+  position: relative;
+}
+
+/* aksen lucu di kiri */
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -12px;
+  top: 20px;
+  width: 20px;
+  height: 20px;
+  background: #ffd84d;
+  border: 2px solid black;
+  border-radius: 50%;
+}
+
+.timeline-item:hover {
+  transform: translateY(-5px);
+}
+
+.timeline-item h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.timeline-item span {
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+.timeline-item p {
+  margin-top: 10px;
+  line-height: 1.6;
+}
+/* ===== PROJECT SECTION ===== */
+.project-section {
+  padding: 80px 40px;
+  background: #d3d4d4;
+}
+
+.project-title {
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 40px;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* CARD */
+.project-card {
+  position: relative;
+  overflow: hidden;
+  border: 3px solid black;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.project-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* OVERLAY (kayak wix) */
+.project-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px;
+  background: rgba(0,0,0,0.6);
+  color: white;
+  opacity: 0;
+  transition: 0.4s;
+}
+
+.project-card:hover .project-overlay {
+  opacity: 1;
+}
+
+.project-overlay h3 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.project-item {
+  position: relative;
+}
+
+
+.project-item::before {
+  content: "";
+  position: absolute;
+
+  top: -12px; 
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 20px;
+  height: 20px;
+  background: #ffd84d;
+  border: 2px solid black;
+  border-radius: 50%;
+
+  z-index: 10;
+}
+.project-card iframe {
+  width: 100%;
+  aspect-ratio: 3 / 2 ;
+  border: none;
+  display: block;
+}
+.project-card {
+  background: black; 
+}
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.ratio-4-3 {
+  position: relative;
+  width: 100%;
+  padding-top: 68%;
+  overflow: hidden;
+}
+
+.ratio-4-3 img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* biar ga gepeng */
+
+}
 </style>
 </head>
 
@@ -415,7 +586,10 @@ body {
   <a href="#home" onclick="showMainPage()">Home</a>
   <a href="#bio" onclick="showMainPage()">Bio</a>
   <a href="#profile" onclick="showMainPage()">Saski’s Profile</a>
- 
+  <a href="#projects" onclick="showMainPage()">Projects</a>
+  <a href="#education" onclick="showMainPage()">Education</a>
+  <a href="#experience" onclick="showMainPage()">Experience</a>
+  
 </nav>
 </header>
 <!-- HERO -->
@@ -437,10 +611,9 @@ body {
 </div>
 
 <div id="mySidebar" class="sidebar-container">
-  <a href="#home" class="sidebar-item" onclick="showMainPage(); toggleSidebar();">Home <span>01</span></a>
- 
-  <a href="javascript:void(0)" class="sidebar-item" onclick="showLovePage(); toggleSidebar();">Loves <span>02</span></a>
-  <a href="javascript:void(0)" class="sidebar-item" onclick="showCampusPage(); toggleSidebar();">Campus Life <span>03</span></a>
+  <a href="javascript:void(0)" class="sidebar-item" onclick="showLovePage(); toggleSidebar();">Loves <span>01</span></a>
+  <a href="javascript:void(0)" class="sidebar-item" onclick="showCampusPage(); toggleSidebar();">Campus Life <span>02</span></a>
+  <a href="javascript:void(0)" class="sidebar-item" onclick="showWireframePage(); toggleSidebar();">Wireframe<span>03</span></a>
 </div>
 <div id="sidebarOverlay" class="sidebar-overlay" onclick="toggleSidebar()" 
      style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.4); z-index:9998;">
@@ -516,6 +689,7 @@ body {
   </table>
 </div>
 </section>
+
 <!-- LOVE -->
 <section id="love" class="love-section">
   <h2>Things I Love ❤️</h2>
@@ -631,8 +805,145 @@ body {
       <img src="uib12.jpeg" alt="Campus 12">
     </div>
   </div>
-  
+
   <button onclick="showMainPage()" style="margin-top:20px; padding:10px 20px; cursor:pointer; border-radius:20px; border:2px solid black; font-weight:600;">Back to Home</button>
+</section>
+
+<section id="projects" class="project-section">
+  <h2 class="project-title">Campus Projects 💻</h2>
+
+  <div class="project-grid">
+
+    <!-- 1. POSTER -->
+    <div class="project-item">
+      <div class="project-card">
+        <img src="poster.jpg" alt="Poster Project">
+        <div class="project-overlay">
+          <h3>Poster Design</h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-item">
+      <div class="project-card">
+        <img src="poster2.jpg" alt="Poster Project">
+        <div class="project-overlay">
+          <h3>Poster Design</h3>
+        </div>
+      </div>
+    </div>
+
+<!-- 3. YOUTUBE VIDEO -->
+<div class="project-item">
+  <div class="project-card ratio-4-3">
+
+    <a href="https://youtu.be/CSUmaeABtMU" target="_blank">
+      <img src="https://img.youtube.com/vi/CSUmaeABtMU/hqdefault.jpg">
+    </a>
+
+    <div class="project-overlay">
+      <h3>Video Project 🎥</h3>
+    </div>
+
+  </div>
+</div>
+
+    <!-- 4. FIGMA UI -->
+    <div class="project-item">
+      <div class="project-card" 
+        onclick="window.open('https://www.figma.com/proto/CkiBHYvu5kWQfv4McaTQkZ/project-prototype?t=2ocSYEwrSDxkU5hi-1')">
+        <img src="figm.jpg" alt="Figma UI">
+        <div class="project-overlay">
+          <h3>UI/UX Prototype 📱</h3>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+<!-- EDUCATION -->
+<section id="education" class="edu-exp-section">
+  <h2 class="edu-exp-title">Education 🎓</h2>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <h3>Universitas Internasional Batam</h3>
+      <span>Information Systems — 2025 - Present</span>
+    </div>
+
+    <div class="timeline-item">
+      <h3>SMA Dr. Indra Adnan Indragiri College</h3>
+      <span>2022 - 2025</span>
+    </div>
+    <div class="timeline-item">
+      <h3>MTsN 2 Indragiri Hilir</h3>
+      <span>2019 - 2022</span>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="edu-exp-section" style="background:#e0f7fa;">
+  <h2 class="edu-exp-title">Experience 💼</h2>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <h3>Teater Warna UIB</h3>
+      <span>2025 - Present</span>
+      <p>
+        Actively involved in creative performances and stage production. Collaborated with team members to bring ideas to life through acting, storytelling, and visual expression.
+      </p>
+    </div>
+
+    <div class="timeline-item">
+      <h3>OSIS SMA Iaic</h3>
+      <span>2022 - 2024</span>
+      <p>
+        Handled digital and technical responsibilities, including managing multimedia content and supporting school events with creative design and technology solutions.
+      </p>
+    </div>
+    <div class="timeline-item">
+      <h3>Teater Gemilang</h3>
+      <span>2023 - 2024</span>
+      <p>
+        Managed organizational documents, coordinated internal communication, and supported event planning while contributing to creative performances.
+      </p>
+    </div>
+    <div class="timeline-item">
+      <h3>PIK-R Digitalis</h3>
+      <span>2023 - 2024</span>
+      <p>
+        Worked in the IT division to create digital content and assist in organizing campaigns, focusing on delivering engaging and informative media.
+      </p>
+    </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="wireframe" style="
+  display: none;
+  min-height: 100vh;
+  padding: 5px 20px;
+  background: #ccebd1;
+  text-align: center;
+">
+
+  <h2>Wireframe Design 📄</h2>
+
+  <iframe 
+    src="wireframe.pdf" 
+    width="90%" 
+    height="600px"
+    style="border:3px solid black; border-radius:15px;">
+  </iframe>
+
+  <br><br>
+  <button onclick="showMainPage()" 
+    style="padding:10px 20px; border-radius:20px; border:2px solid black;">
+    Back to Home
+  </button>
+
 </section>
 <script>
 // 1. Fungsi Popup
@@ -663,16 +974,15 @@ function toggleSidebar() {
   }
 }
 
-// 3. FUNGSI HALAMAN UTAMA (Home, Bio, Profile saja)
+// 3. FUNGSI HALAMAN UTAMA 
 function showMainPage() {
-    // List semua section yang ada di webmu
     const allSections = ['home', 'bio', 'profile', 'love', 'campus'];
     
     allSections.forEach(id => {
         const el = document.getElementById(id);
         if (el) {
             // Hanya munculkan 3 section utama, sisanya sembunyikan
-            if (id === 'home' || id === 'bio' || id === 'profile') {
+            if (id === 'home' || id === 'bio' || id === 'profile' || id === 'education' || id === 'experience') {
                 el.style.display = 'block';
             } else {
                 el.style.display = 'none';
@@ -697,16 +1007,97 @@ function showLovePage() {
 }
 
 // 5. FUNGSI HALAMAN CAMPUS (Terpisah)
-function showCampusPage() {
-    const sectionsToHide = ['home', 'bio', 'profile', 'love'];
-    sectionsToHide.forEach(id => {
+function showMainPage() {
+    const allSections = [
+        'home', 
+        'bio', 
+        'profile', 
+        'projects',
+        'education',
+        'experience',
+        'love', 
+        'campus'
+    ];
+
+    allSections.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+            if (
+                id === 'home' || 
+                id === 'bio' || 
+                id === 'profile' || 
+                id === 'projects' || 
+                id === 'education' || 
+                id === 'experience'
+            ) {
+                el.style.display = 'block';
+            } else {
+                el.style.display = 'none';
+            }
+        }
+    });
+
+    window.scrollTo(0, 0);
+}
+function showLovePage() {
+    const allSections = [
+        'home', 
+        'bio', 
+        'profile', 
+        'projects',
+        'education',
+        'experience',
+        'campus'
+    ];
+
+    allSections.forEach(id => {
         const el = document.getElementById(id);
         if (el) el.style.display = 'none';
     });
 
-    const campusSection = document.getElementById('campus');
-    if (campusSection) campusSection.style.display = 'flex';
+    document.getElementById('love').style.display = 'flex';
     
+    window.scrollTo(0, 0);
+}
+function showCampusPage() {
+    const allSections = [
+        'home', 
+        'bio', 
+        'profile', 
+        'projects',
+        'education',
+        'experience',
+        'love'
+    ];
+
+    allSections.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.style.display = 'none';
+    });
+
+    document.getElementById('campus').style.display = 'flex';
+    
+    window.scrollTo(0, 0);
+}
+function showWireframePage() {
+    const allSections = [
+        'home', 
+        'bio', 
+        'profile', 
+        'projects',
+        'education',
+        'experience',
+        'love',
+        'campus'
+    ];
+
+    allSections.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.style.display = 'none';
+    });
+
+    document.getElementById('wireframe').style.display = 'block';
+
     window.scrollTo(0, 0);
 }
 </script>
